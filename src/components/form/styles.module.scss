@@ -1,0 +1,62 @@
+@use "../../styles/variables.scss" as *;
+
+.form {
+  background-color: $color-white;
+  width: 365px;
+  min-height: 320px;
+  padding: 30px 25px 20px;
+  display: flex;
+  flex-direction: column;
+
+  & h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 0;
+    margin-bottom: 30px;
+  }
+
+  & section {
+    margin-bottom: 30px;
+  }
+
+  & .inputsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  & .inputControl {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & input,
+    & select {
+      width: 236px;
+      height: 22px;
+      border-radius: 0;
+      border: 0.25px solid lighten($color-dark-grey, 40%);
+    }
+
+    & label {
+      line-height: 14px;
+    }
+
+    & .inputError {
+      border-color: $color-error;
+    }
+  }
+
+  & .buttons {
+    margin-top: auto;
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+  }
+
+  & .errorText {
+    color: $color-error;
+    margin: 0;
+    margin-bottom: 5px;
+  }
+}

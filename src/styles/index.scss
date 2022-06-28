@@ -1,0 +1,25 @@
+@use "./normalize.scss";
+@use "./variables.scss" as *;
+html {
+  font-size: 100%;
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: $font-size;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.visually-hidden:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}

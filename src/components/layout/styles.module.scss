@@ -1,0 +1,12 @@
+@use "../../styles/variables.scss" as *;
+
+.buttonWrapper {
+  margin-bottom: 20px;
+}
+
+.tableWrapper {
+  min-height: calc(100vh - 100px);
+  border: 1px solid $color-main-blue;
+  max-width: max-content;
+  min-width: min-content;
+}

@@ -1,0 +1,37 @@
+@use "../../styles/variables.scss" as *;
+
+.btn {
+  display: inline-block;
+  border-style: none;
+  background-color: $color-main-green;
+  border-radius: 12px;
+  padding: 5px 14px;
+  color: $color-white;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 14px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: lighten($color-main-green, 10%);
+  }
+
+  &Outlined {
+    background-color: $color-white;
+    border: 1px solid $color-main-green;
+    color: $color-main-green;
+
+    &:hover {
+      background-color: $color-main-green;
+      color: $color-white;
+    }
+  }
+
+  &:disabled {
+    background-color: $color-dark-grey;
+
+    &:hover {
+      background-color: $color-dark-grey;
+    }
+  }
+}

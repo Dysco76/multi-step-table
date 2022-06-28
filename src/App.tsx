@@ -1,25 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useCallback, useState } from 'react';
+import { Button } from './components/button/Button';
+import { Layout } from './components/layout/Layout'
+import { Table } from './components/table/Table';
+import { Provider } from 'react-redux'
+import { store } from './store'
+import { Modal } from './components/modal/Modal';
+import { Form } from './components/form/Form';
+ 
 function App() {
+  const [openModal, setOpenModal] = useState(false)
+  const closeModal = useCallback(() => {
+    setOpenModal(false)
+  }, []) 
+
   return (
+    <Provider store={store}>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Layout
+        button={<Button text="Add" clickHandler={() => setOpenModal(true)}/>}
+        table={<Table/>}
+      />
     </div>
+    {openModal && <Modal onClose={closeModal}><Form onCancel={closeModal}/></Modal>}
+    </Provider>
   );
 }
 
