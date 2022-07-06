@@ -1,5 +1,5 @@
-import { PersonFormData } from "./PersonFormData";
+import { PersonFormData } from './PersonFormData';
 
 export interface Person extends PersonFormData {
-    id: string;
+  id: string;
 }

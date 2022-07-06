@@ -1,5 +1,5 @@
-@use "./normalize.scss";
-@use "./variables.scss" as *;
+@use './normalize.scss';
+@use './variables.scss' as *;
 html {
   font-size: 100%;
 }
@@ -8,7 +8,7 @@ html {
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: $font-size;
   padding: 20px;
   min-height: 100vh;
