@@ -5,6 +5,9 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { peopleActions } from '../../store';
 import { useDispatch } from 'react-redux';
 import { PersonFormData } from '../../model/PersonFormData';
+import { FormStep1 } from './FormStep1';
+import { FormStep2 } from './FormStep2';
+import { FormStep3 } from './FormStep3';
 
 type formProps = {
   onCancel: () => void;
@@ -126,136 +129,10 @@ export function Form(props: formProps): JSX.Element {
 
   return (
     <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
-      <section className={formStep !== 1 ? 'visually-hidden' : ''}>
-        <h2>Invoice Address</h2>
-        <div className={classes.inputsWrapper}>
-          <div className={classes.inputControl}>
-            <label htmlFor="company">Company *</label>
-            <input
-              type="text"
-              id="company"
-              {...applyFormHook('company', { maxLength: 40 }, true)}
-            />
-          </div>
-          <div className={classes.inputControl}>
-            <label htmlFor="name">Name *</label>
-            <input
-              type="text"
-              id="name"
-              {...applyFormHook('name', { maxLength: 90 }, true)}
-            />
-          </div>
-          <div className={classes.inputControl}>
-            <label htmlFor="additional">Additional</label>
-            <input
-              type="text"
-              id="additional"
-              {...applyFormHook('additional', { maxLength: 150 }, false)}
-            />
-          </div>
-          <div className={classes.inputControl}>
-            <label htmlFor="street">Street</label>
-            <input
-              type="text"
-              id="street"
-              {...applyFormHook('street', { maxLength: 50 })}
-            />
-          </div>
-          <div className={classes.inputControl}>
-            <label htmlFor="postal">Postal Code</label>
-            <input
-              type="text"
-              id="postal"
-              {...applyFormHook('postal', { maxLength: 10 })}
-            />
-          </div>
-          <div className={classes.inputControl}>
-            <label htmlFor="country">Company</label>
-            {countries.length ? (
-              <select
-                id="country"
-                defaultValue={countries[236]}
-                {...applyFormHook('country')}
-              >
-                {countries.map((country, i) => (
-                  <option value={country} key={i}>
-                    {country}
-                  </option>
-                ))}
-              </select>
-            ) : (
-              <input></input>
-            )}
-          </div>
-        </div>
-      </section>
-      <section className={formStep !== 2 ? 'visually-hidden' : ''}>
-        <h2>Bank Data</h2>
-        <div className={classes.inputsWrapper}>
-          <div className={classes.inputControl}>
-            <label htmlFor="IBAN">IBAN *</label>
-            <input
-              type="text"
-              id="IBAN"
-              {...applyFormHook('IBAN', { maxLength: 80 }, true)}
-            />
-          </div>
-          <div className={classes.inputControl}>
-            <label htmlFor="BIC">BIC *</label>
-            <input
-              type="text"
-              id="BIC"
-              {...applyFormHook('BIC', { maxLength: 20 }, true)}
-            />
-          </div>
-          <div className={classes.inputControl}>
-            <label htmlFor="bank">Bank name *</label>
-            <input
-              type="text"
-              id="bank"
-              {...applyFormHook('bank', { maxLength: 40 }, true)}
-            />
-          </div>
-        </div>
-      </section>
-      <section className={formStep !== 3 ? 'visually-hidden' : ''}>
-        <h2>Contact</h2>
-        <div className={classes.inputsWrapper}>
-          <div className={classes.inputControl}>
-            <label htmlFor="fax">Fax</label>
-            <input
-              type="text"
-              id="fax"
-              {...applyFormHook('fax', { maxLength: 20 })}
-            />
-          </div>
-          <div className={classes.inputControl}>
-            <label htmlFor="email">E-mail</label>
-            <input
-              type="email"
-              id="email"
-              {...applyFormHook('email', { maxLength: 50 })}
-            />
-          </div>
-          <div className={classes.inputControl}>
-            <label htmlFor="birthday">Birthday</label>
-            <input
-              type="date"
-              id="birthday"
-              defaultValue="2020-12-12"
-              {...applyFormHook('birthday')}
-            />
-          </div>
-          <div className={classes.inputControl}>
-            <label htmlFor="homepage">Homepage</label>
-            <input
-              type="text"
-              id="homepage"
-              {...applyFormHook('homepage', { maxLength: 100 })}
-            />
-          </div>
-        </div>
-      </section>
+      <FormStep1 visible={formStep === 1} applyFormHook={applyFormHook} countries={countries}/>
+      <FormStep2 visible={formStep === 2} applyFormHook={applyFormHook} />
+      <FormStep3 visible={formStep === 3} applyFormHook={applyFormHook} />
+      
       {isError &&
         Object.keys(errors).map((key) => (
           <p className={classes.errorText} key="key">
