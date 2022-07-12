@@ -17,12 +17,12 @@ export function TableRow(props: tableRowProps): JSX.Element {
   }
 
   function displayCells() {
-    return fields.map((field, i) => {
+    return fields.map((field) => {
       if (field.hidden) {
         return null;
       }
 
-      return <td key={i}>{person[field.id as keyof Person]}</td>;
+      return <td key={field.id}>{person[field.id as keyof Person]}</td>;
     });
   }
 
